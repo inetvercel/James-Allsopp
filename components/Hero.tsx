@@ -44,7 +44,7 @@ export function Hero() {
 
   return (
     <section 
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden custom-cursor"
+      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
     >
       
       {/* Animated Star Field */}
@@ -257,7 +257,7 @@ export function Hero() {
               transition={{ delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button size="lg" className="text-lg group relative overflow-hidden custom-cursor-pointer px-8 py-6">
+              <Button size="lg" className="text-lg group relative overflow-hidden px-8 py-6">
                 <span className="relative z-10">Explore My World</span>
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
                 <motion.div
