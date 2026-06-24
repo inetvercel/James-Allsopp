@@ -18,26 +18,14 @@ export default defineConfig({
         S.list()
           .title('Content')
           .items([
-            // Add Media Library to top of menu
+            // Media at the top for easy uploads
             S.listItem()
-              .title('📷 Media Library')
-              .child(
-                S.documentList()
-                  .title('All Images')
-                  .filter('_type == "sanity.imageAsset"')
-                  .menuItems([
-                    S.menuItem()
-                      .title('Upload Image')
-                      .icon(() => '⬆️')
-                      .action(() => {
-                        // This will be handled by the asset source
-                      })
-                  ])
-              ),
+              .title('📷 Media')
+              .child(S.documentTypeList('media').title('All Media')),
             S.divider(),
-            // All other document types
+            // All other document types except media
             ...S.documentTypeListItems().filter(
-              (listItem) => !['sanity.imageAsset', 'sanity.fileAsset'].includes(listItem.getId() || '')
+              (listItem) => !['media', 'sanity.imageAsset', 'sanity.fileAsset'].includes(listItem.getId() || '')
             ),
           ]),
     }),

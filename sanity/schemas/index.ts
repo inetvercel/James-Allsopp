@@ -3,5 +3,6 @@ import category from './category'
 import author from './author'
 import project from './project'
 import tool from './tool'
+import media from './media'
 
-export const schemaTypes = [post, category, author, project, tool]
+export const schemaTypes = [post, category, author, project, tool, media]
