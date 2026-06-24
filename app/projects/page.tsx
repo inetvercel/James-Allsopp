@@ -9,50 +9,52 @@ import { Button } from "@/components/ui/button"
 export default function ProjectsPage() {
   const projects = [
     {
-      title: "AskZyro",
-      description: "AI-powered Q&A platform built with modern web technologies",
+      title: "iNet Ventures",
+      description: "Established SEO & Digital PR agency since 2013. Helping agencies and businesses scale through outreach, digital PR, link building and content marketing.",
       status: "active",
-      technologies: ["Next.js", "OpenAI", "Vercel", "TypeScript"],
-      url: "#",
-      github: "#",
-      lessons: "Learning to ship fast and iterate based on real user feedback."
+      technologies: ["SEO", "Digital PR", "Link Building", "Content Marketing"],
+      url: "https://inetventures.com",
+      lessons: "Building long-term client relationships and delivering consistent results is the foundation of a sustainable agency."
     },
     {
-      title: "iNet Ventures",
-      description: "SEO agency running since 2013, helping businesses grow online",
+      title: "AskZyro",
+      description: "AI assistant and productivity platform. An AI-powered assistant designed to help with business, productivity, content creation and everyday tasks.",
       status: "active",
-      technologies: ["SEO", "Content Marketing", "Analytics"],
-      url: "#",
-      lessons: "Client acquisition is harder than delivery. Relationships matter more than tactics."
+      technologies: ["AI", "Next.js", "OpenAI", "Productivity"],
+      url: "https://askzyro.com",
+      lessons: "AI tools need to solve real problems, not just showcase technology. User experience matters more than features."
+    },
+    {
+      title: "PS6News",
+      description: "News, rumours and tracking for the next generation of PlayStation. Following PlayStation 6 developments, industry rumours, leaks and next-generation gaming news.",
+      status: "active",
+      technologies: ["WordPress", "Gaming News", "Content Strategy"],
+      url: "https://ps6news.com",
+      lessons: "Niche content sites can build dedicated audiences. Timing and consistency are everything."
     },
     {
       title: "GamerBolt",
-      description: "Gaming content and insights platform",
+      description: "Gaming news, guides and industry coverage. Covering gaming news, reviews, guides and industry developments across multiple platforms.",
       status: "active",
-      technologies: ["WordPress", "Content Strategy"],
-      url: "#",
-      lessons: "Niche content can build sustainable traffic over time."
+      technologies: ["WordPress", "Gaming", "Content Publishing"],
+      url: "https://gamerbolt.com",
+      lessons: "Quality content in competitive niches requires differentiation. Find your unique angle."
     },
     {
-      title: "Domain Portfolio",
-      description: "Collection of premium domains acquired over the years",
-      status: "in-progress",
-      technologies: ["Domain Investment", "Branding"],
-      lessons: "Some domains appreciate, most don't. Buy what you'd actually use."
+      title: "Click Travel Tips",
+      description: "Travel planning, destinations and AI-powered travel tools. Travel inspiration, destination guides and AI-assisted trip planning resources.",
+      status: "active",
+      technologies: ["Travel", "AI Tools", "Content", "WordPress"],
+      url: "https://clicktraveltips.com",
+      lessons: "Combining AI with traditional content creates unique value. Users want both inspiration and practical tools."
     },
     {
-      title: "Failed SaaS #1",
-      description: "Productivity tool that never found product-market fit",
-      status: "failed",
-      technologies: ["React", "Node.js", "MongoDB"],
-      lessons: "Built something I wanted, not what the market needed. Expensive lesson."
-    },
-    {
-      title: "Failed SaaS #2",
-      description: "Social media scheduling tool in an oversaturated market",
-      status: "failed",
-      technologies: ["Vue.js", "Firebase"],
-      lessons: "Competition analysis matters. Don't compete on features alone."
+      title: "Agile",
+      description: "Business, technology and digital publishing platform. A long-running content and publishing project covering business, technology and related topics.",
+      status: "active",
+      technologies: ["Publishing", "Business Content", "WordPress"],
+      url: "https://agile.org.uk",
+      lessons: "Long-term content projects compound over time. Consistency beats intensity."
     }
   ]
 
@@ -97,7 +99,7 @@ export default function ProjectsPage() {
               <span className="gradient-text">Projects</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The good, the bad, and the lessons learned. Every failure teaches something valuable.
+              Building digital products and businesses since 2013. Each project teaches something new.
             </p>
           </div>
 
@@ -144,38 +146,20 @@ export default function ProjectsPage() {
                       </p>
                     </div>
 
-                    {(project.url || project.github) && (
+                    {project.url && (
                       <div className="flex gap-2">
-                        {project.url && (
+                        <a href={project.url} target="_blank" rel="noopener noreferrer">
                           <Button variant="outline" size="sm" className="gap-2">
                             <ExternalLink className="w-4 h-4" />
-                            Visit
+                            Visit Website
                           </Button>
-                        )}
-                        {project.github && (
-                          <Button variant="outline" size="sm" className="gap-2">
-                            <Github className="w-4 h-4" />
-                            Code
-                          </Button>
-                        )}
+                        </a>
                       </div>
                     )}
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
-          </div>
-
-          <div className="mt-12 p-8 glass-effect rounded-lg text-center">
-            <h3 className="text-2xl font-bold mb-4">Lessons from Failed Projects</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Failure isn't the opposite of success—it's part of the journey. Every failed project 
-              taught me something that made the next one better. The key is to fail fast, learn faster, 
-              and keep building.
-            </p>
-            <Button size="lg">
-              Read Full Story
-            </Button>
           </div>
         </motion.div>
       </div>
