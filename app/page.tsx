@@ -320,9 +320,40 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-white/10 py-12">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>© 2024 James Allsopp. Built with Next.js, Sanity, and a lot of curiosity.</p>
+      <footer className="border-t border-cyan-500/20 py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div>
+                <h3 className="font-bold text-lg mb-3 gradient-text">JAMES ALLSOPP</h3>
+                <p className="text-slate-400 text-sm">Building the future, one line at a time.</p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3 text-cyan-400">Quick Links</h4>
+                <ul className="space-y-2 text-sm text-slate-400">
+                  <li><a href="/writing" className="hover:text-cyan-400 transition-colors">Writing</a></li>
+                  <li><a href="/projects" className="hover:text-cyan-400 transition-colors">Projects</a></li>
+                  <li><a href="/contact" className="hover:text-cyan-400 transition-colors">Contact</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3 text-cyan-400">Connect</h4>
+                <ul className="space-y-2 text-sm text-slate-400">
+                  <li><a href="https://twitter.com" className="hover:text-cyan-400 transition-colors">Twitter</a></li>
+                  <li><a href="https://linkedin.com" className="hover:text-cyan-400 transition-colors">LinkedIn</a></li>
+                  <li><a href="https://github.com" className="hover:text-cyan-400 transition-colors">GitHub</a></li>
+                </ul>
+              </div>
+            </div>
+            <div className="border-t border-white/10 pt-8 text-center">
+              <p className="text-slate-400 text-sm">
+                © 2026 <span className="text-cyan-400 font-semibold">JAMES ALLSOPP</span>
+                <span className="mx-2">•</span>
+                <span className="font-mono">Powered by curiosity & caffeine</span>
+              </p>
+            </div>
+          </div>
         </div>
       </footer>
     </main>

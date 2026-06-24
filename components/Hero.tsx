@@ -230,7 +230,7 @@ export function Hero() {
               <span className="text-sm font-medium">Entrepreneur • Builder • Explorer</span>
             </motion.div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8 leading-[0.9] tracking-tighter">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8 leading-[0.9] tracking-tight">
               <motion.span 
                 className="gradient-text inline-block neon-glow"
                 animate={{
@@ -243,9 +243,10 @@ export function Hero() {
                 }}
                 style={{
                   backgroundSize: "200% 200%",
+                  letterSpacing: "0.02em"
                 }}
               >
-                James Allsopp
+                JAMES ALLSOPP
               </motion.span>
             </h1>
 
