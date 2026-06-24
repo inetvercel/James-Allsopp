@@ -178,6 +178,7 @@ export function Hero() {
                       alt="James Allsopp"
                       fill
                       className="object-cover rounded-full"
+                      style={{ objectPosition: '50% 30%' }}
                       priority
                     />
                   </motion.div>
