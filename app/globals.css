@@ -112,8 +112,9 @@
 }
 
 @layer utilities {
+  /* Option 1: Sharp gradient - no glow */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-200 to-white;
     background-size: 200% auto;
   }
   
@@ -125,12 +126,31 @@
     @apply border border-cyan-400/40 shadow-[0_0_30px_rgba(6,182,212,0.2)];
   }
 
-  /* Neon glow effect */
+  /* Subtle sharp glow - crisp edges */
   .neon-glow {
     text-shadow: 
-      0 0 10px rgba(6, 182, 212, 0.5),
-      0 0 20px rgba(6, 182, 212, 0.3),
-      0 0 30px rgba(6, 182, 212, 0.2);
+      0 0 2px rgba(255, 255, 255, 0.8),
+      0 0 4px rgba(6, 182, 212, 0.4);
+  }
+
+  /* Alternative: Metallic chrome effect */
+  .gradient-text-chrome {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #a8e6f0 30%,
+      #06b6d4 50%,
+      #a8e6f0 70%,
+      #ffffff 100%
+    );
+    background-size: 100% 200%;
+  }
+
+  /* Alternative: Electric cyan - sharp */
+  .gradient-text-electric {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-300;
+    background-size: 200% auto;
   }
 
   /* Holographic effect */
