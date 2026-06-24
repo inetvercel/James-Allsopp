@@ -12,7 +12,29 @@ export default defineConfig({
   
   basePath: '/studio',
 
-  plugins: [deskTool(), visionTool()],
+  plugins: [
+    deskTool({
+      structure: (S) =>
+        S.list()
+          .title('Content')
+          .items([
+            // Add Media Library to top of menu
+            S.listItem()
+              .title('📷 Media Library')
+              .child(
+                S.documentTypeList('sanity.imageAsset')
+                  .title('All Images')
+                  .filter('_type == "sanity.imageAsset"')
+              ),
+            S.divider(),
+            // All other document types
+            ...S.documentTypeListItems().filter(
+              (listItem) => !['sanity.imageAsset', 'sanity.fileAsset'].includes(listItem.getId() || '')
+            ),
+          ]),
+    }),
+    visionTool(),
+  ],
 
   schema: {
     types: schemaTypes,
