@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity'
+import { ImageIcon } from '@sanity/icons'
 
 export default defineType({
   name: 'media',
   title: 'Media',
   type: 'document',
+  icon: ImageIcon,
   fields: [
     defineField({
       name: 'title',
@@ -15,6 +17,7 @@ export default defineType({
       name: 'image',
       title: 'Image',
       type: 'image',
+      description: 'After uploading, click the image to see options. Right-click and "Copy image address" to get the URL.',
       options: {
         hotspot: true,
       },
@@ -47,6 +50,14 @@ export default defineType({
       title: 'title',
       media: 'image',
       subtitle: 'alt',
+      imageAsset: 'image.asset',
+    },
+    prepare({ title, media, subtitle, imageAsset }) {
+      return {
+        title,
+        media,
+        subtitle: subtitle || (imageAsset ? 'Image uploaded' : 'No image'),
+      }
     },
   },
 })
