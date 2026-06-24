@@ -46,12 +46,27 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4 h-full">
         <div className="flex items-center justify-between h-full">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold gradient-text cursor-pointer"
-          >
-            JA
-          </motion.div>
+          <a href="/">
+            <motion.div
+              whileHover={{ scale: 1.02, letterSpacing: "0.1em" }}
+              transition={{ duration: 0.3 }}
+              className="relative cursor-pointer group"
+            >
+              <div className="text-xl md:text-2xl font-bold tracking-wider">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-200 to-white font-mono">
+                  JAMES
+                </span>
+                <span className="mx-1 text-cyan-400/50">•</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-300 font-mono">
+                  ALLSOPP
+                </span>
+              </div>
+              {/* Underline glow effect on hover */}
+              <motion.div
+                className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+              />
+            </motion.div>
+          </a>
 
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
