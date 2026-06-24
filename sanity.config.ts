@@ -7,8 +7,10 @@ export default defineConfig({
   name: 'default',
   title: 'James Allsopp Site',
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'iy5bneed',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  
+  basePath: '/studio',
 
   plugins: [deskTool(), visionTool()],
 
