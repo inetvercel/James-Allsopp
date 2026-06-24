@@ -78,7 +78,13 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-black via-slate-950 to-black">
+    <main className="min-h-screen bg-gradient-to-br from-black via-slate-950 to-black relative">
+      {/* Scan lines overlay */}
+      <div className="fixed inset-0 scan-lines pointer-events-none z-50 opacity-30" />
+      
+      {/* Holographic gradient overlay */}
+      <div className="fixed inset-0 holographic pointer-events-none z-40 opacity-50" />
+      
       <Navigation />
       <Hero />
       

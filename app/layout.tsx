@@ -1,8 +1,12 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Space_Grotesk } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-space-grotesk"
+})
 
 export const metadata: Metadata = {
   title: "James Allsopp - Entrepreneur, Builder, Explorer",
@@ -16,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} custom-cursor`}>{children}</body>
+      <body className={`${spaceGrotesk.className} custom-cursor antialiased`}>{children}</body>
     </html>
   )
 }

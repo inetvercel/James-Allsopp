@@ -222,9 +222,9 @@ export function Hero() {
               <span className="text-sm font-medium">Entrepreneur • Builder • Explorer</span>
             </motion.div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8 leading-[0.9] tracking-tight">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8 leading-[0.9] tracking-tighter">
               <motion.span 
-                className="gradient-text inline-block"
+                className="gradient-text inline-block neon-glow"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                 }}
@@ -257,17 +257,11 @@ export function Hero() {
               transition={{ delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button size="lg" className="text-lg group relative overflow-hidden px-8 py-6">
-                <span className="relative z-10">Explore My World</span>
+              <Button size="lg" className="text-lg group relative overflow-hidden px-8 py-6 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 border-0 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/40 transition-all">
+                <span className="relative z-10 font-semibold">Explore My World</span>
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
               </Button>
-              <Button size="lg" variant="outline" className="text-lg border-cyan-500/50 hover:bg-cyan-500/10">
+              <Button size="lg" variant="outline" className="text-lg border-cyan-400/50 hover:bg-cyan-400/10 hover:border-cyan-400 transition-all">
                 Latest Projects
               </Button>
             </motion.div>
