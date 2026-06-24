@@ -1,10 +1,8 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { client } from "@/lib/sanity"
 import { urlFor } from "@/lib/sanity"
 import { PortableText } from "@portabletext/react"
 import { Navigation } from "@/components/Navigation"
+import { AnimatedSection, AnimatedImage } from "@/components/BlogPostClient"
 import { Calendar, Clock, User, ArrowLeft, Share2, Bookmark } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -134,11 +132,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <div className="container mx-auto px-4 pt-32 pb-12">
           <div className="max-w-4xl mx-auto">
             {/* Back Button */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="mb-8"
-            >
+            <AnimatedSection delay={0}>
+              <div className="mb-8">
               <Link 
                 href="/writing"
                 className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors group"
@@ -146,16 +141,13 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                 <span className="font-mono text-sm">Back to Writing</span>
               </Link>
-            </motion.div>
+              </div>
+            </AnimatedSection>
 
             {/* Categories */}
             {post.categories && post.categories.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="flex flex-wrap gap-2 mb-6"
-              >
+              <AnimatedSection delay={0.1}>
+                <div className="flex flex-wrap gap-2 mb-6">
                 {post.categories.map((category: any) => (
                   <span
                     key={category.title}
@@ -164,38 +156,29 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                     {category.title}
                   </span>
                 ))}
-              </motion.div>
+                </div>
+              </AnimatedSection>
             )}
 
             {/* Title */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl font-bold mb-8 leading-tight gradient-text neon-glow"
-            >
+            <AnimatedSection delay={0.2}>
+              <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight gradient-text neon-glow">
               {post.title}
-            </motion.h1>
+              </h1>
+            </AnimatedSection>
 
             {/* Excerpt */}
             {post.excerpt && (
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-xl md:text-2xl text-slate-400 mb-8 leading-relaxed"
-              >
+              <AnimatedSection delay={0.3}>
+                <p className="text-xl md:text-2xl text-slate-400 mb-8 leading-relaxed">
                 {post.excerpt}
-              </motion.p>
+                </p>
+              </AnimatedSection>
             )}
 
             {/* Meta Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="flex flex-wrap items-center gap-6 pb-8 border-b border-white/10"
-            >
+            <AnimatedSection delay={0.4}>
+              <div className="flex flex-wrap items-center gap-6 pb-8 border-b border-white/10">
               {post.author && (
                 <div className="flex items-center gap-3">
                   {post.author.image && (
@@ -235,18 +218,15 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                   <Bookmark className="w-5 h-5 text-slate-400 group-hover:text-cyan-400 transition-colors" />
                 </button>
               </div>
-            </motion.div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
 
         {/* Featured Image */}
         {post.mainImage && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5 }}
-            className="container mx-auto px-4 mb-16"
-          >
+          <AnimatedImage delay={0.5}>
+            <div className="container mx-auto px-4 mb-16">
             <div className="max-w-5xl mx-auto relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden border border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
               <Image
                 src={urlFor(post.mainImage).url()}
@@ -257,17 +237,14 @@ export default async function BlogPost({ params }: { params: { slug: string } })
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </div>
-          </motion.div>
+            </div>
+          </AnimatedImage>
         )}
 
         {/* Content */}
         <div className="container mx-auto px-4 pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="max-w-3xl mx-auto"
-          >
+          <AnimatedSection delay={0.6}>
+            <div className="max-w-3xl mx-auto">
             <div className="prose prose-invert prose-lg max-w-none">
               <PortableText
                 value={post.body}
@@ -309,7 +286,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 </button>
               </div>
             </div>
-          </motion.div>
+            </div>
+          </AnimatedSection>
         </div>
       </article>
 
