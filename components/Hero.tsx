@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [cursorVariant, setCursorVariant] = useState("default")
+  const [windowSize, setWindowSize] = useState({ width: 1920, height: 1080 })
   
   const cursorX = useMotionValue(0)
   const cursorY = useMotionValue(0)
@@ -17,25 +18,38 @@ export function Hero() {
   const cursorYSpring = useSpring(cursorY, springConfig)
 
   useEffect(() => {
+    // Set initial window size
+    if (typeof window !== 'undefined') {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    }
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 16)
       cursorY.set(e.clientY - 16)
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
+
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    }
     
     window.addEventListener("mousemove", moveCursor)
-    return () => window.removeEventListener("mousemove", moveCursor)
+    window.addEventListener("resize", handleResize)
+    return () => {
+      window.removeEventListener("mousemove", moveCursor)
+      window.removeEventListener("resize", handleResize)
+    }
   }, [])
 
   const avatarRotateX = useTransform(
     useMotionValue(mousePosition.y),
-    [0, window.innerHeight],
+    [0, windowSize.height],
     [15, -15]
   )
   
   const avatarRotateY = useTransform(
     useMotionValue(mousePosition.x),
-    [0, window.innerWidth],
+    [0, windowSize.width],
     [-15, 15]
   )
 
