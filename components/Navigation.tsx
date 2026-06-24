@@ -1,12 +1,25 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { scrollY } = useScroll()
+  
+  const navHeight = useTransform(scrollY, [0, 100], [80, 64])
+  const navBlur = useTransform(scrollY, [0, 100], [0, 20])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -20,10 +33,16 @@ export function Navigation() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-white/10"
+      style={{ 
+        height: navHeight,
+        backdropFilter: scrolled ? `blur(${navBlur}px)` : "blur(0px)",
+      }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-black/80 border-b border-cyan-500/20 shadow-lg shadow-cyan-500/10" : "glass-effect border-b border-white/10"
+      }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-4 h-full">
+        <div className="flex items-center justify-between h-full">
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="text-xl font-bold gradient-text cursor-pointer"

@@ -3,6 +3,7 @@
 import { Navigation } from "@/components/Navigation"
 import { Hero } from "@/components/Hero"
 import { CategoryCard } from "@/components/CategoryCard"
+import { StatsCounter } from "@/components/StatsCounter"
 import { 
   Briefcase, 
   Brain, 
@@ -91,15 +92,46 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {categories.map((category, index) => (
-            <CategoryCard
-              key={index}
-              {...category}
-            />
-          ))}
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-7xl mx-auto">
+          {/* Large card - Business */}
+          <div className="md:col-span-2 lg:col-span-3 md:row-span-2">
+            <CategoryCard {...categories[0]} />
+          </div>
+          
+          {/* Medium cards */}
+          <div className="md:col-span-2 lg:col-span-3">
+            <CategoryCard {...categories[1]} />
+          </div>
+          
+          <div className="md:col-span-2 lg:col-span-2">
+            <CategoryCard {...categories[2]} />
+          </div>
+          
+          <div className="md:col-span-2 lg:col-span-2">
+            <CategoryCard {...categories[3]} />
+          </div>
+          
+          <div className="md:col-span-2 lg:col-span-2">
+            <CategoryCard {...categories[4]} />
+          </div>
+          
+          {/* Large card - Projects */}
+          <div className="md:col-span-2 lg:col-span-3 md:row-span-2">
+            <CategoryCard {...categories[5]} />
+          </div>
+          
+          <div className="md:col-span-2 lg:col-span-3">
+            <CategoryCard {...categories[6]} />
+          </div>
+          
+          <div className="md:col-span-4 lg:col-span-6">
+            <CategoryCard {...categories[7]} />
+          </div>
         </div>
       </section>
+
+      <StatsCounter />
 
       <section className="container mx-auto px-4 py-20">
         <div className="glass-effect rounded-2xl p-12 text-center max-w-4xl mx-auto">
