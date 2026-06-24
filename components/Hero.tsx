@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { Sparkles, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -146,7 +147,7 @@ export function Hero() {
             >
               {/* 3D Avatar Container */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-cyan-600 p-1">
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-8xl font-bold relative overflow-hidden">
+                <div className="w-full h-full rounded-full bg-black flex items-center justify-center relative overflow-hidden">
                   {/* Animated Gradient Overlay */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-transparent to-blue-500/20"
@@ -160,11 +161,11 @@ export function Hero() {
                     }}
                   />
                   
-                  {/* Avatar Text */}
-                  <motion.span 
-                    className="gradient-text relative z-10"
+                  {/* Profile Image */}
+                  <motion.div
+                    className="relative z-10 w-full h-full"
                     animate={{
-                      scale: [1, 1.05, 1],
+                      scale: [1, 1.02, 1],
                     }}
                     transition={{
                       duration: 2,
@@ -172,8 +173,14 @@ export function Hero() {
                       ease: "easeInOut"
                     }}
                   >
-                    JA
-                  </motion.span>
+                    <Image
+                      src="https://cdn.sanity.io/images/iy5bneed/production/ef16b089d81e935d8248bf26e80188c8a9bb05c8-880x830.jpg"
+                      alt="James Allsopp"
+                      fill
+                      className="object-cover rounded-full"
+                      priority
+                    />
+                  </motion.div>
                   
                   {/* Orbiting Particles */}
                   {[...Array(8)].map((_, i) => (
