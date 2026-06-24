@@ -7,7 +7,6 @@ import { useEffect, useState } from "react"
 
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [cursorVariant, setCursorVariant] = useState("default")
   const [windowSize, setWindowSize] = useState({ width: 1920, height: 1080 })
   
   const cursorX = useMotionValue(0)
@@ -53,42 +52,30 @@ export function Hero() {
     [-15, 15]
   )
 
-  const variants = {
-    default: {
-      scale: 1,
-      backgroundColor: "rgba(6, 182, 212, 0.3)",
-    },
-    text: {
-      scale: 3,
-      backgroundColor: "rgba(6, 182, 212, 0.1)",
-      mixBlendMode: "difference" as const,
-    },
-    button: {
-      scale: 1.5,
-      backgroundColor: "rgba(6, 182, 212, 0.5)",
-    }
-  }
-
   return (
     <section 
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden cursor-none"
-      onMouseEnter={() => setCursorVariant("default")}
+      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
+      style={{ cursor: 'none' }}
     >
-      {/* Custom Cursor */}
+      {/* Custom Cursor - Simple Cyan Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-cyan-400 pointer-events-none z-[100] mix-blend-difference"
+        className="fixed top-0 left-0 pointer-events-none z-[100]"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
         }}
-        variants={variants}
-        animate={cursorVariant}
-        transition={{ type: "spring", stiffness: 500, damping: 28 }}
-      />
+      >
+        <div className="relative -translate-x-1/2 -translate-y-1/2">
+          {/* Main cursor dot */}
+          <div className="w-3 h-3 bg-cyan-400 rounded-full" />
+          {/* Outer ring */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-cyan-400/40 rounded-full" />
+        </div>
+      </motion.div>
       
       {/* Animated Star Field */}
       <div className="absolute inset-0">
-        {[...Array(100)].map((_, i) => {
+        {[...Array(40)].map((_, i) => {
           const size = Math.random() * 3
           const duration = Math.random() * 3 + 2
           const delay = Math.random() * 2
@@ -250,8 +237,6 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="flex-1 text-center lg:text-left"
-            onMouseEnter={() => setCursorVariant("text")}
-            onMouseLeave={() => setCursorVariant("default")}
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -297,8 +282,6 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              onMouseEnter={() => setCursorVariant("button")}
-              onMouseLeave={() => setCursorVariant("default")}
             >
               <Button size="lg" className="text-lg group relative overflow-hidden">
                 <span className="relative z-10">Explore My World</span>
