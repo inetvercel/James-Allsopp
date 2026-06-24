@@ -22,11 +22,14 @@ export function Navigation() {
   }, [])
 
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Writing", href: "/writing" },
+    { label: "Journal", href: "/journal" },
     { label: "Projects", href: "/projects" },
+    { label: "Media", href: "/media" },
     { label: "Tools", href: "/tools" },
-    { label: "About", href: "/about" },
+    { label: "Travel", href: "/travel" },
+    { label: "Timeline", href: "/timeline" },
+    { label: "Experiments", href: "/experiments" },
+    { label: "Recommendations", href: "/recommendations" },
   ]
 
   return (
@@ -66,9 +69,11 @@ export function Navigation() {
           </div>
 
           <div className="hidden md:block">
-            <Button variant="outline" size="sm">
-              Contact
-            </Button>
+            <a href="/contact">
+              <Button variant="outline" size="sm">
+                Contact
+              </Button>
+            </a>
           </div>
 
           <button
