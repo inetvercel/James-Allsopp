@@ -48,22 +48,22 @@ export function Navigation() {
         <div className="flex items-center justify-between h-full">
           <a href="/">
             <motion.div
-              whileHover={{ scale: 1.02, letterSpacing: "0.1em" }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               className="relative cursor-pointer group"
             >
-              <div className="text-xl md:text-2xl font-bold tracking-wider">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-200 to-white font-mono">
+              <div className="flex items-center gap-2 text-xl md:text-2xl">
+                <span className="font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-cyan-100">
                   JAMES
                 </span>
-                <span className="mx-1 text-cyan-400/50">•</span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-300 font-mono">
+                <span className="text-cyan-400/30 font-light">|</span>
+                <span className="font-semibold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-cyan-400">
                   ALLSOPP
                 </span>
               </div>
-              {/* Underline glow effect on hover */}
+              {/* Subtle underline on hover */}
               <motion.div
-                className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute -bottom-0.5 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />
             </motion.div>
           </a>
