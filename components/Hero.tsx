@@ -8,23 +8,13 @@ import { useEffect, useState } from "react"
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [windowSize, setWindowSize] = useState({ width: 1920, height: 1080 })
-  
-  const cursorX = useMotionValue(0)
-  const cursorY = useMotionValue(0)
-  
-  const springConfig = { damping: 25, stiffness: 150 }
-  const cursorXSpring = useSpring(cursorX, springConfig)
-  const cursorYSpring = useSpring(cursorY, springConfig)
 
   useEffect(() => {
-    // Set initial window size
     if (typeof window !== 'undefined') {
       setWindowSize({ width: window.innerWidth, height: window.innerHeight })
     }
 
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 16)
-      cursorY.set(e.clientY - 16)
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
 
@@ -54,28 +44,12 @@ export function Hero() {
 
   return (
     <section 
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
-      style={{ cursor: 'none' }}
+      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden custom-cursor"
     >
-      {/* Custom Cursor - Simple Cyan Dot */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[100]"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-        }}
-      >
-        <div className="relative -translate-x-1/2 -translate-y-1/2">
-          {/* Main cursor dot */}
-          <div className="w-3 h-3 bg-cyan-400 rounded-full" />
-          {/* Outer ring */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-cyan-400/40 rounded-full" />
-        </div>
-      </motion.div>
       
       {/* Animated Star Field */}
       <div className="absolute inset-0">
-        {[...Array(40)].map((_, i) => {
+        {[...Array(30)].map((_, i) => {
           const size = Math.random() * 3
           const duration = Math.random() * 3 + 2
           const delay = Math.random() * 2
@@ -242,13 +216,13 @@ export function Hero() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect mb-6"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-effect mb-8 border border-cyan-500/20"
             >
               <Sparkles className="w-4 h-4 text-cyan-400" />
               <span className="text-sm font-medium">Entrepreneur • Builder • Explorer</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8 leading-[0.9] tracking-tight">
               <motion.span 
                 className="gradient-text inline-block"
                 animate={{
@@ -271,7 +245,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
+              className="text-xl md:text-2xl text-slate-400 mb-10 leading-relaxed max-w-2xl"
             >
               Running an SEO agency since 2013. Building with AI. Exploring life's interesting corners
               from Type 2 Diabetes to domain collecting, from Staffordshire to Malta.
@@ -283,7 +257,7 @@ export function Hero() {
               transition={{ delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button size="lg" className="text-lg group relative overflow-hidden">
+              <Button size="lg" className="text-lg group relative overflow-hidden custom-cursor-pointer px-8 py-6">
                 <span className="relative z-10">Explore My World</span>
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
                 <motion.div
