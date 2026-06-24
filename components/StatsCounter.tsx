@@ -10,7 +10,7 @@ interface Stat {
 }
 
 const statsSet1: Stat[] = [
-  { value: "13+", label: "Years", sublabel: "Building Online" },
+  { value: "13+", label: "Years Building Online" },
   { value: "20+", label: "Projects Launched" },
   { value: "Media", label: "Quoted Expert" },
   { value: "Explorer", label: "Business • Travel • AI" },
