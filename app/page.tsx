@@ -248,7 +248,7 @@ export default function Home() {
 
       <StatsCounter />
 
-      {/* Tools Section - Unique Design */}
+      {/* Projects Section */}
       <section className="container mx-auto px-4 py-32">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-16">
@@ -259,7 +259,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="text-cyan-400 font-mono text-sm tracking-wider uppercase"
               >
-                Interactive Tools
+                Featured Projects
               </motion.span>
               <motion.h2
                 initial={{ opacity: 0, x: -20 }}
@@ -268,7 +268,7 @@ export default function Home() {
                 transition={{ delay: 0.1 }}
                 className="text-5xl md:text-7xl font-bold mt-2"
               >
-                Built for <span className="gradient-text">Real Use</span>
+                What I've <span className="gradient-text">Built</span>
               </motion.h2>
             </div>
             <motion.div
@@ -283,13 +283,18 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              { name: "Blood Sugar Tracker", desc: "Real-time glucose monitoring", color: "from-emerald-500 to-teal-500" },
-              { name: "SEO Calculator", desc: "ROI & traffic projections", color: "from-cyan-500 to-blue-500" },
-              { name: "Domain Analyzer", desc: "Value estimation & metrics", color: "from-blue-500 to-indigo-500" },
-              { name: "Productivity Timer", desc: "Focus tracking & analytics", color: "from-orange-500 to-amber-500" },
-            ].map((tool, i) => (
-              <motion.div
-                key={tool.name}
+              { emoji: "🚀", name: "iNet Ventures", desc: "Established SEO & Digital PR agency since 2013. Helping agencies and businesses scale through outreach, digital PR, link building and content marketing.", url: "inetventures.com", color: "from-cyan-500 to-blue-500" },
+              { emoji: "🤖", name: "AskZyro", desc: "AI assistant and productivity platform. An AI-powered assistant designed to help with business, productivity, content creation and everyday tasks.", url: "askzyro.com", color: "from-purple-500 to-pink-500" },
+              { emoji: "🎮", name: "PS6News", desc: "News, rumours and tracking for the next generation of PlayStation. Following PlayStation 6 developments, industry rumours, leaks and next-generation gaming news.", url: "ps6news.com", color: "from-blue-500 to-indigo-500" },
+              { emoji: "🎮", name: "GamerBolt", desc: "Gaming news, guides and industry coverage. Covering gaming news, reviews, guides and industry developments across multiple platforms.", url: "gamerbolt.com", color: "from-violet-500 to-purple-500" },
+              { emoji: "✈️", name: "Click Travel Tips", desc: "Travel planning, destinations and AI-powered travel tools. Travel inspiration, destination guides and AI-assisted trip planning resources.", url: "clicktraveltips.com", color: "from-orange-500 to-amber-500" },
+              { emoji: "🏢", name: "Agile", desc: "Business, technology and digital publishing platform. A long-running content and publishing project covering business, technology and related topics.", url: "agile.org.uk", color: "from-slate-500 to-zinc-500" },
+            ].map((project, i) => (
+              <motion.a
+                key={project.name}
+                href={`https://${project.url}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -297,24 +302,25 @@ export default function Home() {
                 whileHover={{ scale: 1.02, y: -5 }}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 hover:border-cyan-500/30 p-8 bg-gradient-to-br from-white/[0.02] to-white/[0.01] backdrop-blur-xl transition-all duration-500 cursor-pointer"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center`}>
-                      <span className="text-2xl">→</span>
+                    <div className="text-4xl">
+                      {project.emoji}
                     </div>
                     <motion.div
                       className="text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"
                       animate={{ x: [0, 5, 0] }}
                       transition={{ repeat: Infinity, duration: 1.5 }}
                     >
-                      <span className="font-mono text-sm">Launch</span>
+                      <span className="font-mono text-sm">Visit →</span>
                     </motion.div>
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">{tool.name}</h3>
-                  <p className="text-slate-400">{tool.desc}</p>
+                  <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
+                  <p className="text-slate-400 text-sm mb-3">{project.desc}</p>
+                  <p className="text-cyan-400 text-sm font-mono">{project.url}</p>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </div>
