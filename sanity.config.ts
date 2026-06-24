@@ -22,9 +22,17 @@ export default defineConfig({
             S.listItem()
               .title('📷 Media Library')
               .child(
-                S.documentTypeList('sanity.imageAsset')
+                S.documentList()
                   .title('All Images')
                   .filter('_type == "sanity.imageAsset"')
+                  .menuItems([
+                    S.menuItem()
+                      .title('Upload Image')
+                      .icon(() => '⬆️')
+                      .action(() => {
+                        // This will be handled by the asset source
+                      })
+                  ])
               ),
             S.divider(),
             // All other document types
