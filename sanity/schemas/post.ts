@@ -67,9 +67,6 @@ export default defineType({
             hotspot: true,
           },
         },
-        {
-          type: 'code',
-        },
       ],
     }),
     defineField({
