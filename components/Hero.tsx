@@ -174,7 +174,7 @@ export function Hero() {
                     }}
                   >
                     <Image
-                      src="https://cdn.sanity.io/images/iy5bneed/production/ef16b089d81e935d8248bf26e80188c8a9bb05c8-880x830.jpg"
+                      src="https://cdn.sanity.io/images/iy5bneed/production/12f5f8bae4f24109ef2ae965c7a75c8ec728377f-1254x1254.png"
                       alt="James Allsopp"
                       fill
                       className="object-cover rounded-full"
